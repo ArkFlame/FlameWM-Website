@@ -49,6 +49,12 @@ Then open `http://127.0.0.1:8080/`.
 ├── .nojekyll
 ├── 404.html
 ├── CNAME
+├── android-chrome-192x192.png
+├── android-chrome-512x512.png
+├── apple-touch-icon.png
+├── favicon-16x16.png
+├── favicon-32x32.png
+├── favicon.ico
 ├── index.html
 ├── README.md
 ├── robots.txt
