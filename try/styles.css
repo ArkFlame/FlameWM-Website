@@ -47,6 +47,7 @@ button { color: inherit; }
   position: absolute;
   inset: 0;
   background-color: #000;
+  background-image: url("assets/images/flamewm-default-wallpaper.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

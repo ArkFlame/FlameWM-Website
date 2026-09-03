@@ -9,6 +9,7 @@
   const ICON_W = 82;
   const ICON_H = 82;
   const DEFAULT_ACCENT = '#ef4048';
+  const DEFAULT_WALLPAPER = 'assets/images/flamewm-default-wallpaper.webp';
   const DEFAULT_HOTKEYS = Object.freeze({
     start: 'Meta',
     desktopLeft: 'Ctrl+Meta+ArrowLeft',
@@ -41,7 +42,7 @@
     snapCandidate: null,
     accent: storageGet('flamewm-v8-accent', DEFAULT_ACCENT),
     customAccentCandidate: storageGet('flamewm-v8-custom-accent', '#d92857'),
-    wallpaperData: storageGet('flamewm-v8-wallpaper', ''),
+    wallpaperData: storageGet('flamewm-v8-wallpaper', DEFAULT_WALLPAPER),
     showWatermark: storageGet('flamewm-v8-show-watermark', '1') !== '0',
     settingsPage: 'appearance',
     hotkeys: Object.assign({}, DEFAULT_HOTKEYS, storageGetJson('flamewm-v8-hotkeys', DEFAULT_HOTKEYS)),
@@ -1731,7 +1732,7 @@
   function renderSettingsPage() {
     if (state.settingsPage === 'desktop') {
       return `<section class="settings-page"><h2>Desktop</h2><p class="settings-description">Wallpaper, desktop feedback and sticky notes.</p><div class="settings-card">
-        <div class="setting-block"><div><strong>Background</strong><span>Pitch black is the default.</span></div><div class="setting-actions"><button class="settings-button" data-wallpaper-reset>Pitch black</button><label class="settings-button file-button">Choose image<input data-wallpaper-file type="file" accept="image/*"></label></div></div>
+        <div class="setting-block"><div><strong>Background</strong><span>The FlameWM wallpaper is the default.</span></div><div class="setting-actions"><button class="settings-button" data-wallpaper-reset>FlameWM default</button><label class="settings-button file-button">Choose image<input data-wallpaper-file type="file" accept="image/*"></label></div></div>
         <div class="setting-block"><div><strong>Show FlameWM mark</strong></div><button class="toggle-button ${state.showWatermark?'on':''}" data-watermark-toggle aria-pressed="${state.showWatermark}"><span></span></button></div>
         <div class="setting-block"><div><strong>Sticky notes</strong><span>Disabling removes all notes.</span></div><button class="toggle-button ${state.stickyNotesEnabled?'on':''}" data-sticky-notes-toggle aria-pressed="${state.stickyNotesEnabled}"><span></span></button></div>
         <div class="setting-block vertical"><div><strong>Selection rectangle opacity</strong></div><div class="opacity-setting-row"><div class="opacity-demo selection-opacity-demo"><span></span></div><input type="range" min="0" max="60" step="1" value="${state.selectionOpacity}" data-selection-opacity><output>${state.selectionOpacity}%</output></div></div>
@@ -1787,7 +1788,7 @@
     if (custom) custom.oninput = () => { state.customAccentCandidate = custom.value; storageSet('flamewm-v8-custom-accent', custom.value); applyAccent(custom.value); };
     node.querySelector('[data-icon-theme]')?.addEventListener('change', e=>{state.iconTheme=e.target.value;storageSet('flamewm-v8-icon-theme',state.iconTheme);document.documentElement.dataset.iconTheme=state.iconTheme;toast(`Icon theme: ${state.iconTheme}`);});
     node.querySelector('[data-wallpaper-reset]')?.addEventListener('click', () => {
-      state.wallpaperData=''; storageSet('flamewm-v8-wallpaper',''); applyWallpaper(); toast('Background reset to pitch black');
+      state.wallpaperData=DEFAULT_WALLPAPER; storageSet('flamewm-v8-wallpaper',DEFAULT_WALLPAPER); applyWallpaper(); toast('Background reset to FlameWM default');
     });
     const file = node.querySelector('[data-wallpaper-file]');
     if (file) file.onchange = () => {
