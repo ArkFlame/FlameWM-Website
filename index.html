@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090a0c">
   <meta name="color-scheme" content="dark light">
-  <title>FlameWM — IceWM made friendly</title>
-  <meta name="description" content="FlameWM is a lightweight, familiar desktop by ArkFlame Studios: IceWM made friendly with a modern Breeze-informed experience.">
+  <title>FlameWM — A lightweight Linux desktop</title>
+  <meta name="description" content="FlameWM is a lightweight Rust desktop and window manager by ArkFlame Studios, inspired by IceWM and KDE Plasma.">
   <link rel="canonical" href="https://wm.arkflame.com/">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -16,12 +16,12 @@
   <link rel="stylesheet" href="assets/css/site.css">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="FlameWM — IceWM made friendly">
+  <meta property="og:title" content="FlameWM — A lightweight Linux desktop">
   <meta property="og:description" content="A lightweight desktop by ArkFlame Studios. Familiar by default, fast by construction.">
   <meta property="og:url" content="https://wm.arkflame.com/">
   <meta property="og:image" content="https://wm.arkflame.com/assets/images/flamewm-desktop.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FlameWM — IceWM made friendly">
+  <meta name="twitter:title" content="FlameWM — A lightweight Linux desktop">
   <meta name="twitter:description" content="A lightweight desktop by ArkFlame Studios. Familiar by default, fast by construction.">
   <meta name="twitter:image" content="https://wm.arkflame.com/assets/images/flamewm-desktop.png">
 </head>
@@ -45,8 +45,8 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary" data-nav>
         <a href="#experience">Experience</a>
         <a href="#features">Features</a>
-        <a href="#architecture">Architecture</a>
-        <a href="https://github.com/arkflame/flamewm" rel="noreferrer">Source</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="https://github.com/ArkFlame/flamewm" rel="noreferrer">GitHub</a>
         <a class="nav-donate" href="https://paypal.me/LinsaFTW" rel="noreferrer">Donate</a>
       </nav>
     </div>
@@ -58,21 +58,22 @@
       <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
       <div class="shell hero-content">
         <div class="hero-copy reveal">
-          <div class="eyebrow"><span class="status-dot"></span> In development · X11-first</div>
-          <h1>IceWM speed.<br><span>Finished-desktop UX.</span></h1>
-          <p class="hero-lead">FlameWM is IceWM made friendly by ArkFlame Studios — a lightweight desktop built around the familiar workflow of modern Windows and KDE, without importing a heavyweight desktop shell.</p>
+          <div class="eyebrow"><span class="status-dot"></span> In development · Built in Rust</div>
+          <h1>Lightweight Linux.<br><span>Finished-desktop UX.</span></h1>
+          <p class="hero-lead">FlameWM is a lightweight desktop and window manager by ArkFlame Studios, written in Rust and inspired by IceWM and KDE Plasma. It brings a familiar, polished workflow without turning the desktop into a configuration project.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="try/">Try Now!</a>
-            <a class="button button-primary" href="https://github.com/arkflame/flamewm" rel="noreferrer">
+            <a class="button button-primary" href="https://github.com/ArkFlame/flamewm" rel="noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8A11.2 11.2 0 0 0 8.46 22.63c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.34-3.79-1.34-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15A10.7 10.7 0 0 1 12 6.08c.95 0 1.9.13 2.8.38 2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
-              View source
+              GitHub
             </a>
-            <a class="button button-secondary" href="#experience">Discover FlameWM</a>
+            <a class="button button-secondary" href="https://paypal.me/LinsaFTW" rel="noreferrer">Donate</a>
+            <a class="button button-secondary" href="https://github.com/ArkFlame/icewm-rust" rel="noreferrer">IceWM Rust</a>
           </div>
-          <div class="hero-meta" aria-label="FlameWM technology summary">
-            <span>Built on IceWM 4.1.0</span>
-            <span>Native C++ / X11</span>
-            <span>Breeze-informed UI</span>
+          <div class="hero-meta" aria-label="FlameWM summary">
+            <span>Written in Rust</span>
+            <span>Inspired by IceWM + KDE Plasma</span>
+            <span>Lightweight by design</span>
           </div>
         </div>
 
@@ -96,7 +97,7 @@
       <div class="shell narrow reveal">
         <p class="section-kicker">A lightweight desktop should still feel complete.</p>
         <h2>Familiar immediately. Quiet when you work.</h2>
-        <p class="section-lead">FlameWM keeps IceWM's mature window-management engine underneath and replaces the exposed configuration-heavy experience with deliberate defaults, a coherent taskbar, simple settings, modern window layouts and native system controls.</p>
+        <p class="section-lead">FlameWM takes the best ideas from lightweight window managers and polished desktop environments, then turns them into one deliberate experience: clear defaults, a coherent taskbar, simple settings, modern window layouts and system controls that feel like part of the desktop.</p>
       </div>
 
       <div class="shell principle-grid">
@@ -108,12 +109,12 @@
         <article class="principle-card reveal reveal-late">
           <span class="principle-number">02</span>
           <h3>Fast by construction</h3>
-          <p>The shell stays native and event-driven. No Qt, GTK, QML, Electron or web runtime is required to make the FlameWM desktop itself work.</p>
+          <p>Designed for quick startup, low memory use and a responsive desktop. FlameWM aims to stay out of your way instead of filling the session with background complexity.</p>
         </article>
         <article class="principle-card reveal reveal-later">
           <span class="principle-number">03</span>
           <h3>Finished by default</h3>
-          <p>The desktop is a product, not a construction kit. The useful path is visible; advanced IceWM configuration can remain an expert escape hatch.</p>
+          <p>The desktop is a product, not a construction kit. Useful defaults are ready from the first session, while deeper personalization stays optional instead of becoming setup work.</p>
         </article>
       </div>
     </section>
@@ -123,7 +124,7 @@
         <div class="split-copy reveal">
           <span class="pill">Simple by default</span>
           <h2>Settings for people, not window-manager internals.</h2>
-          <p>Appearance, desktop, taskbar, displays, fonts and hotkeys are presented as direct choices. Change the wallpaper, accent, taskbar edge or size without learning IceWM preference files or raw pixel geometry.</p>
+          <p>Appearance, desktop, taskbar, displays, fonts and hotkeys are presented as direct choices. Change the wallpaper, accent, taskbar edge or size without learning implementation-specific configuration files or raw pixel geometry.</p>
           <ul class="check-list">
             <li>Flame red visual identity with system icon-theme support</li>
             <li>Wallpaper, taskbar and desktop controls in one coherent surface</li>
@@ -145,7 +146,7 @@
         <div class="split-copy reveal">
           <span class="pill pill-dark">Desktop workflow</span>
           <h2>One taskbar. The controls you actually use.</h2>
-          <p>FlameWM turns IceWM's panel foundations into a modern desktop taskbar: Start, pinned and running applications, workspaces, media, audio, networking, tray items and clock — with deliberate spacing and no legacy monitor clutter by default.</p>
+          <p>FlameWM gives you a modern desktop taskbar: Start, pinned and running applications, workspaces, media, audio, networking, tray items and clock — with deliberate spacing and no legacy monitor clutter by default.</p>
           <div class="mini-feature-grid">
             <div><strong>Pin & reorder</strong><span>Keep favorite apps stable and drag entries into the order that fits your workflow.</span></div>
             <div><strong>Multiple windows</strong><span>Open windows remain independently addressable instead of disappearing into one ambiguous activity.</span></div>
@@ -167,7 +168,7 @@
         <div class="feature-heading reveal">
           <span class="pill">Modern window management</span>
           <h2>Lightweight does not have to mean primitive.</h2>
-          <p>FlameWM keeps IceWM's proven window, workspace and task state authorities, then adds the interaction layer desktop users expect today.</p>
+          <p>FlameWM combines familiar window layouts, workspaces, task controls and desktop interactions in one consistent workflow.</p>
         </div>
 
         <div class="feature-grid">
@@ -183,7 +184,7 @@
               <svg viewBox="0 0 24 24"><path d="M4.5 4A2.5 2.5 0 0 0 2 6.5v11A2.5 2.5 0 0 0 4.5 20h15a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 19.5 4h-15ZM4 7h16v10H4V7Zm2 2v6h5V9H6Zm7 0v2h5V9h-5Zm0 4v2h5v-2h-5Z"/></svg>
             </div>
             <h3>Desktops that stay simple</h3>
-            <p>Runtime workspaces, directional navigation and drag-through-edge movement use IceWM's existing desktop engine instead of a second state system.</p>
+            <p>Add or remove workspaces, move between them with the keyboard, and carry a window across desktops by dragging it to the screen edge.</p>
           </article>
           <article class="feature-card reveal reveal-later">
             <div class="feature-icon" aria-hidden="true">
@@ -197,7 +198,7 @@
               <svg viewBox="0 0 24 24"><path d="M8.25 5.5a3.75 3.75 0 1 1 7.5 0v1.2a6.75 6.75 0 0 1 3 5.6v2.95l1.18 1.57A1.35 1.35 0 0 1 18.85 19H5.15a1.35 1.35 0 0 1-1.08-2.18l1.18-1.57V12.3a6.75 6.75 0 0 1 3-5.6V5.5Zm2 0v.46a6.86 6.86 0 0 1 3.5 0V5.5a1.75 1.75 0 1 0-3.5 0Zm-3 6.8v3.62L6.44 17h11.12l-.81-1.08V12.3a4.75 4.75 0 1 0-9.5 0ZM10 20h4a2 2 0 0 1-4 0Z"/></svg>
             </div>
             <h3>Native system controls</h3>
-            <p>Audio, Wi-Fi and media controls are designed as small event-driven integrations with the Linux services already responsible for those systems.</p>
+            <p>Volume, Wi-Fi and media controls stay close to the taskbar, with clear popovers and the controls you expect.</p>
           </article>
           <article class="feature-card reveal reveal-late">
             <div class="feature-icon" aria-hidden="true">
@@ -210,33 +211,33 @@
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 2.5 4.5 6v5.25c0 4.77 3.1 9.17 7.5 10.25 4.4-1.08 7.5-5.48 7.5-10.25V6L12 2.5Zm0 2.2 5.5 2.57v3.98c0 3.63-2.2 7.13-5.5 8.18-3.3-1.05-5.5-4.55-5.5-8.18V7.27L12 4.7Zm-1 3.3v4.59l3.2 1.85 1-1.74-2.2-1.27V8h-2Z"/></svg>
             </div>
-            <h3>Low overhead is a release gate</h3>
-            <p>Memory, startup time, idle CPU and wakeups are measured rather than assumed. Permanent processes must justify their cost.</p>
+            <h3>Performance you can feel</h3>
+            <p>Fast startup, low memory use and a quiet idle desktop are part of the product goal, not optional tuning.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section architecture" id="architecture">
+    <section class="section architecture" id="philosophy">
       <div class="shell architecture-grid">
         <div class="architecture-copy reveal">
-          <span class="pill pill-dark">Architecture</span>
-          <h2>Keep the engine.<br>Replace the friction.</h2>
-          <p>FlameWM is not a rewrite of a working window manager. IceWM keeps ownership of windows, focus, workspaces, work areas, task state, tray behavior and X11 protocol correctness. FlameWM owns what people see and how normal desktop actions feel.</p>
-          <a class="text-link" href="https://github.com/arkflame/flamewm" rel="noreferrer">Read the source on GitHub <span aria-hidden="true">→</span></a>
+          <span class="pill pill-dark">Design direction</span>
+          <h2>Inspired by great ideas.<br>Designed as FlameWM.</h2>
+          <p>FlameWM is a standalone Rust alternative inspired by IceWM's efficiency and KDE Plasma's polished desktop experience. It keeps the familiar parts people already understand and shapes them into one focused, coherent desktop of its own.</p>
+          <a class="text-link" href="https://github.com/ArkFlame/flamewm" rel="noreferrer">Follow FlameWM on GitHub <span aria-hidden="true">→</span></a>
         </div>
 
-        <div class="stack-diagram reveal reveal-late" aria-label="FlameWM architecture diagram">
+        <div class="stack-diagram reveal reveal-late" aria-label="FlameWM design principles">
           <div class="stack-card stack-flame">
             <span>FlameWM experience</span>
-            <strong>Taskbar · Start · Settings · Desktop · Snap UX · System controls</strong>
+            <strong>Taskbar · Start · Settings · Desktop · Window layouts · System controls</strong>
           </div>
           <div class="stack-connector" aria-hidden="true"><span></span><span></span><span></span></div>
           <div class="stack-card stack-ice">
-            <span>IceWM engine</span>
-            <strong>Windows · Focus · Workspaces · EWMH/ICCCM · XRandR · Tray · QuickSwitch</strong>
+            <span>Design inspiration</span>
+            <strong>IceWM efficiency · KDE Plasma polish · Familiar desktop conventions</strong>
           </div>
-          <div class="stack-base">X11 · Linux</div>
+          <div class="stack-base">Standalone FlameWM · Rust · Linux</div>
         </div>
       </div>
     </section>
@@ -245,7 +246,7 @@
       <div class="shell">
         <div class="screenshot-heading reveal">
           <span class="pill">Current desktop</span>
-          <h2>A modern desktop that happens to use IceWM internally.</h2>
+          <h2>A modern desktop designed to feel natural from the first session.</h2>
         </div>
         <figure class="full-screenshot reveal reveal-late">
           <picture>
@@ -262,10 +263,10 @@
         <div>
           <span class="eyebrow">Open source · built in public</span>
           <h2>Help turn lightweight Linux into a finished desktop experience.</h2>
-          <p>Follow FlameWM development, inspect the IceWM-based implementation, report issues or support ArkFlame Studios.</p>
+          <p>Follow FlameWM development, report issues, try the interactive desktop demo or support ArkFlame Studios.</p>
         </div>
         <div class="cta-actions">
-          <a class="button button-primary" href="https://github.com/arkflame/flamewm" rel="noreferrer">Source code</a>
+          <a class="button button-primary" href="https://github.com/ArkFlame/flamewm" rel="noreferrer">GitHub</a>
           <a class="button button-secondary" href="https://paypal.me/LinsaFTW" rel="noreferrer">Donate</a>
         </div>
       </div>
@@ -284,8 +285,10 @@
       <div class="footer-links">
         <div>
           <strong>Project</strong>
-          <a href="https://github.com/arkflame/flamewm" rel="noreferrer">Source code</a>
-          <a href="https://github.com/arkflame/flamewm/issues" rel="noreferrer">Issues</a>
+          <a href="try/">Try Now!</a>
+          <a href="https://github.com/ArkFlame/flamewm" rel="noreferrer">GitHub</a>
+          <a href="https://github.com/ArkFlame/flamewm/issues" rel="noreferrer">Issues</a>
+          <a href="https://github.com/ArkFlame/icewm-rust" rel="noreferrer">IceWM Rust</a>
         </div>
         <div>
           <strong>Support</strong>
@@ -295,7 +298,7 @@
       </div>
     </div>
     <div class="shell footer-bottom">
-      <span>FlameWM is built on IceWM.</span>
+      <span>FlameWM is inspired by IceWM and KDE Plasma.</span>
       <span>© <span data-year></span> ArkFlame Studios.</span>
     </div>
   </footer>

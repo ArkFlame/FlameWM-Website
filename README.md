@@ -1,6 +1,6 @@
 # FlameWM website
 
-Static GitHub Pages website for **FlameWM — IceWM made friendly by ArkFlame Studios**.
+Static GitHub Pages website for **FlameWM**, a lightweight Rust desktop and window manager by ArkFlame Studios inspired by IceWM and KDE Plasma.
 
 Production domain: **https://wm.arkflame.com**
 
@@ -64,6 +64,8 @@ Then open `http://127.0.0.1:8080/`.
 
 ## Project links used by the site
 
-- Source: https://github.com/arkflame/flamewm
+- Try Now: https://wm.arkflame.com/try/
+- GitHub: https://github.com/ArkFlame/flamewm
 - Donate: https://paypal.me/LinsaFTW
+- IceWM Rust: https://github.com/ArkFlame/icewm-rust
 - Website: https://wm.arkflame.com

@@ -1,8 +1,8 @@
 # FlameWM Desktop Prototype v8 — Final Taskbar Reorder Fix
 
-Interactive HTML/CSS/JavaScript specification for FlameWM, ArkFlame Studios' lightweight IceWM 4.1.0 fork.
+Interactive behavior and visual specification for FlameWM, ArkFlame Studios' lightweight desktop and window manager.
 
-This is a behavioral/visual prototype only. Production FlameWM remains native C++/X11 on IceWM; no browser/WebView runtime is intended.
+This directory contains the interactive behavior/visual reference used by the website. FlameWM itself is a standalone Rust alternative inspired by IceWM and KDE Plasma.
 
 ## Run
 
