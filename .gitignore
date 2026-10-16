@@ -1,19 +1,5 @@
-# OS / editor
+node_modules/
+dist/
+.astro/
 .DS_Store
-Thumbs.db
-*~
-*.swp
-*.swo
-.idea/
-.vscode/
-
-# Local preview / tooling
-.venv/
-__pycache__/
 *.log
-.tmp/
-tmp/
-
-# Archives generated for handoff
-*.tar.gz
-*.zip

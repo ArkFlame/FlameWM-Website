@@ -1,71 +1,70 @@
-# FlameWM website
+# FlameWM Website
 
-Static GitHub Pages website for **FlameWM**, a lightweight Rust desktop and window manager by ArkFlame Studios inspired by IceWM and KDE Plasma.
+A responsive marketing site for **FlameWM**, built with **Astro** and deployed as static HTML to **GitHub Pages**. Includes the original interactive desktop prototype at `/try/`.
 
-Production domain: **https://wm.arkflame.com**
+- Canonical site: https://wm.arkflame.com
+- Website source: https://github.com/ArkFlame/FlameWM-Website
+- FlameWM source: https://github.com/ArkFlame/flamewm
 
-## Deploy
+## Local development
 
-1. Create or use the GitHub repository that will host the website.
-2. Push this directory to the repository's `main` branch.
-3. In **Settings → Pages**, set **Source** to **GitHub Actions** if it is not already selected.
-4. The included `.github/workflows/pages.yml` publishes the static site automatically.
-5. Keep the repository-root `CNAME` file. It contains `wm.arkflame.com`.
+Requires Node.js 22.22+ (Node.js 24 recommended) and npm. Astro 7.3.8 is pinned. Build-time dependency: Astro; no frontend framework is shipped to the browser.
 
-## DNS for wm.arkflame.com
-
-Because `wm.arkflame.com` is a custom subdomain, configure a DNS `CNAME` record at the domain provider:
-
-```text
-Type:  CNAME
-Name:  wm
-Value: <YOUR-GITHUB-USER-OR-ORG>.github.io
+```sh
+npm install
+npm run dev
+npm run build
+npm run check:static
+npm run preview
 ```
 
-Replace the value with the GitHub Pages host for the account/organization that owns the website repository. Do not point the DNS record at `wm.arkflame.com` itself.
+The build writes to `dist/`. Only `dist/` is deployed. Do not publish `src/` as the Pages branch source.
 
-After DNS resolves, GitHub Pages can provision HTTPS. GitHub recommends verifying the custom domain in the account/organization settings as an additional takeover-protection measure.
+**Verification note:** This package includes a browser-tested offline static preview in `dist/`. The local sandbox cannot reach the npm registry (`EAI_AGAIN`), so the Astro compiler build could not run here. The GitHub Actions workflow runs `npm install`, `astro build` and the post-build static check in an environment with npm access. Do not report the GitHub deployment as verified until that workflow succeeds.
 
-## Local preview
+## Deploy to GitHub Pages
 
-No build tool or package manager is required.
+1. Replace the contents of the `FlameWM-Website` repository with this package, keeping `.github/workflows/pages.yml`.
+2. Push to `main`.
+3. Under **Settings → Pages → Build and deployment**, select **GitHub Actions**.
+4. The workflow installs Astro, builds prerendered pages, checks output and publishes `dist/`.
+5. Under **Settings → Pages → Custom domain**, set `wm.arkflame.com` and enable **Enforce HTTPS** after certificate issuance. `public/CNAME` already contains the domain.
+6. DNS should contain a `wm` **CNAME** record pointing to the correct organization Pages host, typically `arkflame.github.io` (verify the actual organization Pages host before changing existing DNS). Do not overwrite working DNS unnecessarily.
 
-```bash
-python3 -m http.server 8080
+### Testing at the default GitHub project URL instead
+
+`astro.config.mjs` supports the `SITE_URL` and `BASE_PATH` environment variables:
+
+```sh
+SITE_URL=https://arkflame.github.io BASE_PATH=/FlameWM-Website/ npm run build
 ```
 
-Then open `http://127.0.0.1:8080/`.
+All Astro-generated links and CSS image paths use `import.meta.env.BASE_URL`. **A GitHub project URL cannot simultaneously use the existing `wm.arkflame.com` CNAME.** To deploy to the project URL rather than the custom domain, remove `public/CNAME`, set the two environment variables in the workflow build step, adjust `robots.txt`, `sitemap.xml`, and domain-specific metadata for the new host, then push.
 
-## Structure
+### Jekyll / Astro decision
 
-```text
-.
-├── .github/workflows/pages.yml
-├── assets/
-│   ├── css/site.css
-│   ├── images/
-│   └── js/site.js
-├── .gitignore
-├── .nojekyll
-├── 404.html
-├── CNAME
-├── android-chrome-192x192.png
-├── android-chrome-512x512.png
-├── apple-touch-icon.png
-├── favicon-16x16.png
-├── favicon-32x32.png
-├── favicon.ico
-├── index.html
-├── README.md
-├── robots.txt
-├── site.webmanifest
-└── sitemap.xml
-```
+GitHub Pages can build Jekyll directly from a publishing branch; it does not automatically build Astro source from a branch. Astro generates plain HTML/CSS and static assets; GitHub Actions publishes its `dist/` artifact. Jekyll and a GitHub Pages Ruby theme are not needed. Do not enable a Jekyll theme for this Astro project.
 
-## Project links used by the site
+## Content and assets
 
-- Try Now: https://wm.arkflame.com/try/
-- GitHub: https://github.com/ArkFlame/flamewm
-- Donate: https://paypal.me/LinsaFTW
-- IceWM Rust: https://github.com/ArkFlame/icewm-rust
-- Website: https://wm.arkflame.com
+| Path | Role |
+| --- | --- |
+| `src/pages/index.astro` | Overview/landing |
+| `src/pages/features.astro` | Product features and workflow |
+| `src/pages/about.astro` | Background and product principles |
+| `src/layouts/SiteLayout.astro` | Shared meta, navigation and footer |
+| `src/components/DesktopPreview.astro` | **Illustrative concept**; replace with actual product screenshot when available |
+| `src/styles/global.css` | Global design tokens, layout and responsiveness |
+| `public/try/` | Existing interactive prototype, preserved verbatim |
+| `public/assets/images/` | Legacy development screenshots and wallpaper used as placeholders |
+| `public/CNAME` | Existing production domain |
+
+**Reality / release policy:** The preview is illustrative and `/try/` is a browser prototype, not a downloadable operating system. Do not label native features as released without release evidence. Current copy avoids numeric performance/availability claims.
+
+**Screenshot replacement:** Replace `DesktopPreview.astro` contents with a responsive `<picture>`/`<img>` once approved real screenshots exist. Replace development reference images under `public/assets/images/`. Retain dimensions or CSS aspect ratios to avoid layout shift. New images should be optimized WebP/AVIF and include meaningful alternative text.
+
+**Asset provenance:** FlameWM mark and development image files were carried forward from the provided website archive. The existing `/try/` subdirectory includes its own `LICENSE.txt` and bundled asset licensing notices. Do not remove those notices.
+
+## Test scope
+
+The static output validator (`tests/check_static.py`) verifies required routes, links, local file dependencies, CNAME, prototype assets and HTML-level invariants. Local browser checks should also cover mobile navigation, keyboard accessibility, viewport overflow and demo behavior. A successful CI build is required before claiming the GitHub Pages deployment is fully verified.

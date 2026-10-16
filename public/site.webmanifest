@@ -2,20 +2,20 @@
   "name": "FlameWM",
   "short_name": "FlameWM",
   "description": "A lightweight Rust desktop by ArkFlame Studios, inspired by IceWM and KDE Plasma.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#090a0c",
   "theme_color": "#090a0c",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"

@@ -1,0 +1,17 @@
+---
+const { compact = false } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+<div class:list={['desktop-preview', compact && 'desktop-preview-compact']} aria-label="Illustrative FlameWM desktop concept with file manager, settings and bottom taskbar" role="img" style={`--preview-bg: url('${base}assets/images/flamewm-wallpaper.webp')`}>
+  <div class="mock-wallpaper-shade"></div>
+  <div class="mock-desktop-icons" aria-hidden="true"><div><span class="desktop-folder">▰</span><small>Home</small></div><div><span class="desktop-folder desktop-folder-blue">▰</span><small>Projects</small></div><div><span class="desktop-bin">♧</span><small>Trash</small></div></div>
+  <div class="mock-explorer" aria-hidden="true">
+    <div class="mock-window-top"><div class="mock-traffic"><i></i><i></i><i></i></div><span>Files</span><div class="window-controls">− &nbsp; ◻ &nbsp; ×</div></div>
+    <div class="mock-explorer-body">
+      <aside><div class="mock-side-active"><span>⌂</span> Home</div><div><span>▤</span> Desktop</div><div><span>▣</span> Documents</div><div><span>▧</span> Downloads</div><div><span>◷</span> Recent</div><div class="side-divider"></div><div><span>▰</span> Drives</div></aside>
+      <div class="mock-file-area"><div class="mock-file-bar"><span>‹ &nbsp; ›</span><span class="mock-address">⌂ &nbsp; / &nbsp; Home &nbsp; / &nbsp; Workspace</span><span>⌕</span></div><div class="mock-file-title">Good morning.</div><div class="mock-file-subtitle">Pick up where you left off.</div><div class="mock-files"><div class="mock-file"><span class="file-illustration orange">▰</span><small>Projects</small></div><div class="mock-file"><span class="file-illustration purple">▰</span><small>Documents</small></div><div class="mock-file"><span class="file-illustration blue">▰</span><small>Pictures</small></div><div class="mock-file"><span class="file-illustration sea">▰</span><small>Music</small></div></div><div class="mock-file-divider"></div><div class="mock-latest">Recently opened <span>View all →</span></div><div class="mock-recent"><span class="recent-square"></span><span>Design-notes.md <small>Edited just now</small></span><span>⋯</span></div></div>
+    </div>
+  </div>
+  <div class="mock-settings" aria-hidden="true"><div class="mini-window-bar">Appearance <span>×</span></div><div class="mock-settings-content"><div class="mini-kicker">MAKE IT YOURS</div><div class="mini-title">Your desktop.<br />Your way.</div><div class="mini-swatches"><b></b><b></b><b></b><b></b><b></b></div><div class="mini-toggles"><i></i><span>Dark appearance</span><em></em></div><div class="mini-toggles"><i></i><span>Accent color</span><em></em></div></div></div>
+  <div class="mock-taskbar" aria-hidden="true"><div class="mock-start"><img src={`${base}assets/brand/flamewm-mark.svg`} width="17" height="17" alt="" /></div><span class="task-button selected">▤</span><span class="task-button">◈</span><span class="task-button">✦</span><span class="task-spacer"></span><span class="task-dot"></span><span class="task-wifi">◕</span><span class="task-time">10:42<br /><small>Friday</small></span></div>
+</div>

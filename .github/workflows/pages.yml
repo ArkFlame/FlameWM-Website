@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+name: Deploy FlameWM website
 
 on:
   push:
@@ -11,50 +11,33 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: github-pages
   cancel-in-progress: true
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build static site
+        run: npm run build
+      - name: Verify generated pages and assets
+        run: npm run check:static
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Build static artifact
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(tr -d '\r\n' < CNAME)" = "wm.arkflame.com"
-          test -f index.html
-          test -f assets/css/site.css
-          test -f assets/js/site.js
-          test -f assets/images/flamewm-desktop.webp
-          test -f favicon.ico
-          test -f favicon-16x16.png
-          test -f favicon-32x32.png
-          test -f apple-touch-icon.png
-          test -f android-chrome-192x192.png
-          test -f android-chrome-512x512.png
-
-          rm -rf _site
-          mkdir -p _site
-          cp index.html 404.html CNAME robots.txt sitemap.xml site.webmanifest .nojekyll _site/
-          cp favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png _site/
-          cp android-chrome-192x192.png android-chrome-512x512.png _site/
-          cp -R assets _site/assets
-
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
