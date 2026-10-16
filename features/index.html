@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0c10" />
+    <meta name="description" content="An independent Rust desktop and window manager for Linux. Familiar by design and lightweight at heart." />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="canonical" href="https://wm.arkflame.com/features/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FlameWM" />
+    <meta property="og:title" content="FlameWM — features" />
+    <meta property="og:description" content="An independent Rust desktop and window manager for Linux. Familiar by design and lightweight at heart." />
+    <meta property="og:url" content="https://wm.arkflame.com/features/" />
+    <meta property="og:image" content={new URL(url('assets/brand/flamewm-real-screenshot-preview.webp'), Astro.site || Astro.url).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>FlameWM — features</title>
+  <link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="header" id="top" data-header>
+      <div class="container header-inner">
+        <a href="/" class="identity" aria-label="FlameWM — Home">
+          <img class="brand-wordmark" src="/assets/brand/flamewm-navbar.webp" alt="FlameWM" width="198" height="62" decoding="async" />
+        </a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="/" >Overview</a>
+          <a href="/features/" aria-current="page">Features</a>
+          <a href="/about/" >About</a>
+          <a href="/#benchmarks">RAM usage</a>
+          <a href="/try/">Interactive demo <span aria-hidden="true">↗</span></a>
+        </nav>
+        <div class="nav-actions">
+          <a href="https://github.com/ArkFlame/flamewm" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="FlameWM on GitHub">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8A11.2 11.2 0 0 0 8.46 22.63c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.34-3.79-1.34-.51-1.3-1.25-1.65-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15A10.7 10.7 0 0 1 12 6.08c.95 0 1.9.13 2.8.38 2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z" /></svg>
+          </a>
+          <a class="button button-small button-accent nav-primary" href="/try/">Explore FlameWM <span aria-hidden="true">↗</span></a>
+          <button type="button" class="menu-toggle" data-menu-toggle aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu hidden>
+        <a href="/">Overview</a>
+        <a href="/features/">Features</a>
+        <a href="/about/">About</a>
+        <a href="/#benchmarks">RAM usage</a>
+        <a href="/try/">Interactive demo</a>
+        <a href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a>
+      </nav>
+    </header>
+    <main id="content"><section class="subhero"><div class="container subhero-inner" data-reveal><span class="eyebrow red">FEATURES / A MORE CONSIDERED DESKTOP</span><h1>Good design feels<br /><em>effortless.</em></h1><p>FlameWM aims to give you the comfort of a familiar desktop with the clarity and efficiency of a lightweight window manager.</p></div></section>
+<section class="feature-deep"><div class="container deep-grid"><div data-reveal><span class="eyebrow red">01 / EVERYDAY WORK</span><h2>Right where you<br />expect it.</h2><p>Start menu, taskbar, workspaces, status controls and window actions in the places you already know. FlameWM is designed to feel familiar on day one.</p><div class="deep-bullets"><span>Application launcher and taskbar</span><span>Desktop files and workspace controls</span><span>Window snapping and multitasking</span></div></div><div class="deep-preview" data-reveal><div class="desktop-preview desktop-preview-compact" aria-label="Illustrative FlameWM desktop concept with file manager, settings and bottom taskbar" role="img" style="--preview-bg:url('/assets/images/flamewm-wallpaper.webp')">
+  <div class="mock-wallpaper-shade"></div>
+  <div class="mock-desktop-icons" aria-hidden="true"><div><span class="desktop-folder">▰</span><small>Home</small></div><div><span class="desktop-folder desktop-folder-blue">▰</span><small>Projects</small></div><div><span class="desktop-bin">♧</span><small>Trash</small></div></div>
+  <div class="mock-explorer" aria-hidden="true">
+    <div class="mock-window-top"><div class="mock-traffic"><i></i><i></i><i></i></div><span>Files</span><div class="window-controls">− &nbsp; ◻ &nbsp; ×</div></div>
+    <div class="mock-explorer-body">
+      <aside><div class="mock-side-active"><span>⌂</span> Home</div><div><span>▤</span> Desktop</div><div><span>▣</span> Documents</div><div><span>▧</span> Downloads</div><div><span>◷</span> Recent</div><div class="side-divider"></div><div><span>▰</span> Drives</div></aside>
+      <div class="mock-file-area"><div class="mock-file-bar"><span>‹ &nbsp; ›</span><span class="mock-address">⌂ &nbsp; / &nbsp; Home &nbsp; / &nbsp; Workspace</span><span>⌕</span></div><div class="mock-file-title">Good morning.</div><div class="mock-file-subtitle">Pick up where you left off.</div><div class="mock-files"><div class="mock-file"><span class="file-illustration orange">▰</span><small>Projects</small></div><div class="mock-file"><span class="file-illustration purple">▰</span><small>Documents</small></div><div class="mock-file"><span class="file-illustration blue">▰</span><small>Pictures</small></div><div class="mock-file"><span class="file-illustration sea">▰</span><small>Music</small></div></div><div class="mock-file-divider"></div><div class="mock-latest">Recently opened <span>View all →</span></div><div class="mock-recent"><span class="recent-square"></span><span>Design-notes.md <small>Edited just now</small></span><span>⋯</span></div></div>
+    </div>
+  </div>
+  <div class="mock-settings" aria-hidden="true"><div class="mini-window-bar">Appearance <span>×</span></div><div class="mock-settings-content"><div class="mini-kicker">MAKE IT YOURS</div><div class="mini-title">Your desktop.<br />Your way.</div><div class="mini-swatches"><b></b><b></b><b></b><b></b><b></b></div><div class="mini-toggles"><i></i><span>Dark appearance</span><em></em></div><div class="mini-toggles"><i></i><span>Accent color</span><em></em></div></div></div>
+  <div class="mock-taskbar" aria-hidden="true"><div class="mock-start"><img src="/assets/brand/flamewm-mark.svg" width="17" height="17" alt="" /></div><span class="task-button selected">▤</span><span class="task-button">◈</span><span class="task-button">✦</span><span class="task-spacer"></span><span class="task-dot"></span><span class="task-wifi">◕</span><span class="task-time">10:42<br /><small>Friday</small></span></div>
+</div>
+<small>Illustrative concept preview</small></div></div></section>
+<section class="feature-deep feature-deep-alt"><div class="container deep-grid reversed"><div class="deep-image" data-reveal><img src="/assets/images/flamewm-settings.webp" alt="FlameWM settings reference showing About page and navigation" width="755" height="505" loading="lazy" /><small>Existing development screenshot</small></div><div data-reveal><span class="eyebrow red">02 / MEANINGFUL CONTROL</span><h2>Make it yours.<br />Keep it simple.</h2><p>Personalize the essentials through clear, direct settings. The interface focuses on real-world choices instead of exposing implementation details.</p><div class="deep-bullets"><span>Appearance and accent colors</span><span>Display and desktop settings</span><span>Keyboard shortcut preferences</span></div></div></div></section>
+<section class="feature-deep"><div class="container deep-grid"><div data-reveal><span class="eyebrow red">03 / UNDER THE HOOD</span><h2>Built for the<br />lighter side.</h2><p>FlameWM is an independent Rust project drawing on the proven ideas of classic window managers. Its goal is a polished desktop with a small footprint and minimal background work.</p><div class="deep-bullets"><span>Rust implementation</span><span>Lightweight-first engineering decisions</span><span>Open development on GitHub</span></div></div><div class="engine-art" data-reveal><div class="engine-top">FLAMEWM / ARCHITECTURE</div><div class="engine-center"><div>YOUR WORKFLOW</div><span>↓</span><div>FLAMEWM DESKTOP</div><span>↓</span><div>RUST · NATIVE WINDOW MANAGEMENT</div></div><div class="engine-bottom">Purpose-built. Nothing extra.</div></div></div></section>
+<section class="last-cta"><div class="container last-cta-inner" data-reveal><span class="eyebrow">EXPLORE THE DIRECTION</span><h2>See it in action.</h2><p>The browser demo is a design prototype, not an installable operating system.</p><div class="hero-actions"><a class="button button-accent" href="/try/">Try the prototype ↗</a><a class="button button-outline" href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Browse the source ↗</a></div></div></section>
+</main>
+    <footer class="footer">
+      <div class="container footer-top">
+        <div>
+          <a class="identity footer-identity" href="/"><img class="brand-wordmark" src="/assets/brand/flamewm-navbar.webp" alt="FlameWM" width="198" height="62" loading="lazy" decoding="async" /></a>
+          <p>A lighter way to feel at home on Linux.</p>
+        </div>
+        <div class="footer-links"><div><strong>Explore</strong><a href="/features/">Features</a><a href="/try/">Interactive demo</a><a href="/#benchmarks">RAM comparison</a><a href="/about/">About</a></div><div><strong>Project</strong><a href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Source code ↗</a><a href="https://github.com/ArkFlame/flamewm/issues" target="_blank" rel="noopener noreferrer">Issues ↗</a><a href="https://paypal.me/LinsaFTW" target="_blank" rel="noopener noreferrer">Support development ↗</a></div></div>
+      </div>
+      <div class="container footer-bottom"><span>© <span data-year>2026</span> ArkFlame Studios. Built for Linux.</span><span>Independent Rust project · In active development</span></div>
+    </footer>
+    <script src="/assets/js/site.js"></script>
+  </body>
+</html>

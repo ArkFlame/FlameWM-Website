@@ -1,6 +1,6 @@
 """Local Chromium smoke tests without external networking.
 
-When npm is unavailable, preview_build.py generates the static fixture. These
+Uses the committed static site at the repository root. These
 checks verify actual browser layout/interactions, not an Astro compile.
 """
 from pathlib import Path
@@ -9,7 +9,7 @@ import re
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-DIST = ROOT / 'dist'
+DIST = ROOT
 OUT = ROOT / 'screenshots'
 OUT.mkdir(exist_ok=True)
 

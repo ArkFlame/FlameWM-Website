@@ -1,23 +1,27 @@
-# FlameWM Website — verification ledger
+# FlameWM Website — GitHub Pages publishing fix
 
 Date: 2026-10-16
 
-## Completed
+## Root cause
 
-- Source migration: modular Astro layout, shared navigation/footer, landing, features, about, 404.
-- Original `/try/` prototype copied intact from the uploaded website package.
-- GitHub Pages custom domain `wm.arkflame.com` retained via `public/CNAME`.
-- GitHub Actions builds a static `dist/` artifact and deploys it with `actions/deploy-pages`.
-- `src/components/DesktopPreview.astro` is explicit **concept imagery**, not a production screenshot.
-- Static fixture generator ran successfully (`python3 tests/preview_build.py`).
-- Static links/routes/assets/sitemap gate passed (`python3 tests/check_static.py dist`).
-- Chromium set-content rendering and mobile-menu smoke test passed (`python3 tests/browser_smoke.py`) at 1440x900 and 390x844; both had zero document horizontal overflow.
-- The `dist/` folder in this archive is an **offline visual-test fixture**, not output from an installed Astro compiler.
+The uploaded repository had `dist/index.html` but **no root `index.html`**. When GitHub Pages published branch `main` / `(root)`, the README was available as a fallback entry page. Astro was not being compiled by branch-based Pages hosting.
 
-## Remaining external gates
+## Fix
 
-- `npm install && npm run build && npm run check:static` on a machine with access to the npm registry. Local npm registry DNS is blocked in the supplied sandbox; Astro build could not be executed here.
-- GitHub Actions deployment verification after pushing to `ArkFlame/FlameWM-Website` and selecting GitHub Actions under Pages.
-- Real screenshots/assets after the native FlameWM interface is approved; current concepts intentionally temporary.
+The existing tested static website has been promoted into the repository root (HTML, CSS, JS, images, fonts, routes, favicon, `.nojekyll`, `CNAME`). GitHub Pages branch publishing now has a real root entry file. The custom Actions workflow deploys an independently checked static snapshot using the official Pages upload/deploy actions; it does not require npm or Astro.
 
-Do not claim an Astro build or remote deployment has passed before these gates run. CI is designed to reject a failed build/test before publishing.
+## Verified locally
+
+- `python3 tests/check_static.py .` — PASS.
+- `python3 scripts/site_release.py stage` — output generated.
+- `python3 tests/check_static.py .pages-output` — PASS.
+- `python3 tests/browser_smoke.py` — nine desktop/mobile page sizes, homepage assets, RAM chart, demo Start toggle — PASS.
+- `python3 tests/http_smoke.py` — 10 real HTTP routes/assets — PASS.
+- Original `public/try/` and publishable `try/`: 112 identical files (SHA-256 byte comparison).
+- YAML workflow parses; official `actions/upload-pages-artifact@v4` + `actions/deploy-pages@v4` syntax verified against GitHub docs.
+
+## External verification needed
+
+- Actual GitHub Pages publishing source (Settings → Pages) is an account setting that an archive cannot change. Choose `main` / `(root)` or `GitHub Actions`; both are supported.
+- Confirm new public deployment of `https://wm.arkflame.com/` serves FlameWM, not README.
+- Astro compiler build is **optional** for this release and was not run in this environment. Root static HTML is the checked-in publishing authority.

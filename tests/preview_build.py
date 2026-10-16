@@ -1,6 +1,6 @@
 """Offline visual-test fixture from Astro templates. Not the production Astro build.
 
-Used only when npm registry access is unavailable. CI deploys actual `astro build` output.
+Used only when npm registry access is unavailable. GitHub Pages deploys the already-published root site, NOT this fixture.
 """
 from pathlib import Path
 import re, shutil, html

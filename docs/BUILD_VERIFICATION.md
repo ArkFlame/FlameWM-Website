@@ -1,29 +1,19 @@
-# FlameWM Website — Verification ledger
+# FlameWM Website — release verification
 
-Date: 2026-10-16
+The **published site is at repository root**. GitHub Pages can publish `main / (root)` directly. `.nojekyll` prevents Ruby/Jekyll from transforming content. `CNAME` retains `wm.arkflame.com`.
 
-## Included
+The included `.github/workflows/pages.yml` provides an alternative GitHub Actions source that copies root published files to `.pages-output`, validates them and uploads with `actions/upload-pages-artifact@v4`, then deploys with `actions/deploy-pages@v4`. **No Node/npm dependency in the deployment workflow.**
 
-- Astro 7.3.8 static site source: overview, features, about, 404, shared responsive layout and CSS.
-- GitHub Actions Pages deployment workflow, custom domain `wm.arkflame.com`.
-- Preserved full interactive browser prototype under `public/try/` (112/112 original files, byte-for-byte unchanged).
-- Browser-tested static preview in `dist/`; this is a rendering fixture generated offline, **not** Astro compiler output.
-- Development placeholder images and self-contained preview illustrations; no claims that they are shipped native screenshots.
+## Commands
 
-## Verified in this environment
+```sh
+python3 tests/check_static.py .
+python3 scripts/site_release.py stage
+python3 tests/check_static.py .pages-output
+python3 tests/http_smoke.py
+python3 tests/browser_smoke.py  # requires Playwright + Chromium
+```
 
-- `python3 tests/preview_build.py` — completed.
-- `python3 tests/check_static.py dist` — PASS (12 mandatory outputs, local links, sitemap).
-- `python3 tests/browser_smoke.py` — PASS (nine viewports/routes, menu accessibility, desktop preview image, prototype launcher toggle).
-- `node --check public/assets/js/site.js` — PASS.
-- `node --check public/try/app.js` — PASS.
-- Pixel horizontal overflow in nine tested desktop and mobile layouts: 0px.
+Last local verification: static checks, HTTP routes, nine responsive browser cases, `/try/` launcher and assets passed. Actual GitHub publishing/DNS/CDN behavior was not tested or modified.
 
-## Not independently verified
-
-- `npm install && npm run build` could not run in this restricted sandbox: npm registry lookup returns `EAI_AGAIN`. No Astro-built output or live GitHub Pages deployment is claimed.
-- GitHub Pages setup, DNS and HTTPS require repository/site controls. Verify workflow success after pushing.
-
-## Repository publishing
-
-Push the **root source** to the website repository, including `.github/workflows/pages.yml`. In Settings -> Pages select **GitHub Actions** and configure the custom domain **wm.arkflame.com**. This workflow builds `dist/` from the Astro source then deploys. Do not select branch-based Jekyll publishing for Astro source.
+Astro source remains under `src/` for editing. If intentionally rebuilding it later, run `npm install && npm run build:publish` and commit the resulting root HTML/assets. Do not deploy `tests/preview_build.py` fixtures.

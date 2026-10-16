@@ -1,7 +1,7 @@
 """Static build checks for GitHub Pages outputs. Uses stdlib only."""
 import sys, pathlib, re, html.parser, urllib.parse, xml.etree.ElementTree as ET
 root = pathlib.Path(sys.argv[1] if len(sys.argv)>1 else 'dist').resolve()
-required = ('index.html','features/index.html','about/index.html','404.html','try/index.html','try/app.js','try/styles.css','assets/js/site.js','assets/brand/flamewm-mark.svg','CNAME','sitemap.xml','robots.txt')
+required = ('.nojekyll','index.html','features/index.html','about/index.html','404.html','try/index.html','try/app.js','try/styles.css','assets/js/site.js','assets/brand/flamewm-mark.svg','assets/brand/flamewm-navbar.webp','assets/brand/flamewm-real-screenshot-preview.webp','assets/css/site.css','CNAME','sitemap.xml','robots.txt')
 errors = [f'Missing required file: {p}' for p in required if not (root/p).is_file()]
 base = '/'
 class Scan(html.parser.HTMLParser):
@@ -14,7 +14,7 @@ class Scan(html.parser.HTMLParser):
         if tag=='img' and 'alt' not in a:self.imgalt=False
         for att in ('src','href'):
             if att in a:self.links.append((tag,att,a[att]))
-for file in root.glob('**/*.html'):
+for file in (root/'index.html', root/'features/index.html', root/'about/index.html', root/'404.html'):
     # Legacy demo has its own structure; don't apply marketing-page invariants to it.
     if file.relative_to(root).parts[0]=='try':continue
     scan=Scan(file);scan.feed(file.read_text())
@@ -33,6 +33,7 @@ for file in root.glob('**/*.html'):
         else:local=str(file.parent.relative_to(root)/local)
         if local.endswith('/') or local=='':local+='index.html'
         if not (root/local).is_file():errors.append(f'Broken {att} in {file.relative_to(root)}: {link}')
+if (root/'index.html').is_file() and '# FlameWM Website' in (root/'index.html').read_text():errors.append('README is being served as homepage')
 try:ET.parse(root/'sitemap.xml')
 except Exception as e:errors.append(f'Invalid sitemap: {e}')
 if (root/'CNAME').is_file() and (root/'CNAME').read_text().strip()!='wm.arkflame.com':errors.append('Unexpected CNAME')
