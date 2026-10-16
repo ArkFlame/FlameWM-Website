@@ -27,7 +27,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site || Astro.url).toString(
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(url('assets/images/flamewm-desktop.webp'), Astro.site || Astro.url).toString()} />
+    <meta property="og:image" content={new URL(url('assets/brand/flamewm-real-screenshot-preview.webp'), Astro.site || Astro.url).toString()} />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
@@ -36,13 +36,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site || Astro.url).toString(
     <header class="header" id="top" data-header>
       <div class="container header-inner">
         <a href={url('')} class="identity" aria-label="FlameWM — Home">
-          <span class="brand-icon"><img src={url('assets/brand/flamewm-mark.svg')} width="28" height="28" alt="" /></span>
-          <span>Flame<span class="brand-light">WM</span></span>
+          <img class="brand-wordmark" src={url('assets/brand/flamewm-navbar.webp')} alt="FlameWM" width="198" height="62" decoding="async" />
         </a>
         <nav class="desktop-nav" aria-label="Main navigation">
           <a href={url('')} aria-current={page === 'home' ? 'page' : undefined}>Overview</a>
           <a href={url('features/')} aria-current={page === 'features' ? 'page' : undefined}>Features</a>
           <a href={url('about/')} aria-current={page === 'about' ? 'page' : undefined}>About</a>
+          <a href={url('') + '#benchmarks'}>RAM usage</a>
           <a href={url('try/')}>Interactive demo <span aria-hidden="true">↗</span></a>
         </nav>
         <div class="nav-actions">
@@ -57,6 +57,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site || Astro.url).toString(
         <a href={url('')}>Overview</a>
         <a href={url('features/')}>Features</a>
         <a href={url('about/')}>About</a>
+        <a href={url('') + '#benchmarks'}>RAM usage</a>
         <a href={url('try/')}>Interactive demo</a>
         <a href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a>
       </nav>
@@ -65,10 +66,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site || Astro.url).toString(
     <footer class="footer">
       <div class="container footer-top">
         <div>
-          <a class="identity footer-identity" href={url('')}><span class="brand-icon"><img src={url('assets/brand/flamewm-mark.svg')} width="25" height="25" alt="" /></span><span>Flame<span class="brand-light">WM</span></span></a>
+          <a class="identity footer-identity" href={url('')}><img class="brand-wordmark" src={url('assets/brand/flamewm-navbar.webp')} alt="FlameWM" width="198" height="62" loading="lazy" decoding="async" /></a>
           <p>A lighter way to feel at home on Linux.</p>
         </div>
-        <div class="footer-links"><div><strong>Explore</strong><a href={url('features/')}>Features</a><a href={url('try/')}>Interactive demo</a><a href={url('about/')}>About</a></div><div><strong>Project</strong><a href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Source code ↗</a><a href="https://github.com/ArkFlame/flamewm/issues" target="_blank" rel="noopener noreferrer">Issues ↗</a><a href="https://paypal.me/LinsaFTW" target="_blank" rel="noopener noreferrer">Support development ↗</a></div></div>
+        <div class="footer-links"><div><strong>Explore</strong><a href={url('features/')}>Features</a><a href={url('try/')}>Interactive demo</a><a href={url('') + '#benchmarks'}>RAM comparison</a><a href={url('about/')}>About</a></div><div><strong>Project</strong><a href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Source code ↗</a><a href="https://github.com/ArkFlame/flamewm/issues" target="_blank" rel="noopener noreferrer">Issues ↗</a><a href="https://paypal.me/LinsaFTW" target="_blank" rel="noopener noreferrer">Support development ↗</a></div></div>
       </div>
       <div class="container footer-bottom"><span>© <span data-year>2026</span> ArkFlame Studios. Built for Linux.</span><span>Independent Rust project · In active development</span></div>
     </footer>

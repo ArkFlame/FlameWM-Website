@@ -12,11 +12,26 @@ def read(rel):
     return re.sub(r'^---\n.*?\n---\n', '', text, count=1, flags=re.S)
 
 def replace_urls(text):
+    text = text.replace("href={url('') + '#benchmarks'}",'href="/#benchmarks"')
     text = re.sub(r"\b(href|src)=\{(?:url|to)\('([^']*)'\)\}", lambda m: f'{m[1]}="/{m[2]}"', text)
     text = re.sub(r"\b(href|src)=\{`\$\{base\}([^`]*)`\}", lambda m: f'{m[1]}="/{m[2]}"', text)
     text = re.sub(r"\bhref=\{base\}", 'href="/"', text)
     text = text.replace(' is:inline','')
     return text
+
+def render_ram():
+    section = read('src/components/RamComparison.astro')
+    start = section.index('          {benchmarks.map(')
+    end = section.index('          ))}', start)+len('          ))}')
+    rows=[('flamewm','FlameWM',17,'F','#f35058'),('icewm','IceWM',288,'I','#8baad7'),('lxqt','LXQt',745,'L','#43c0b6'),('mate','MATE',835,'M','#8ab77d'),('xfce','Xfce',888,'X','#91b7f1'),('gnome','GNOME',894,'G','#93afea'),('cinnamon','Cinnamon',960,'C','#d19b70'),('plasma','KDE Plasma',1209,'K','#a79ee6')]
+    bars=[]
+    for slug,name,value,letter,color in rows:
+        v=f'≈{value} MB' if slug=='flamewm' else (f'{value} MB' if slug=='icewm' else f'{value} MiB')
+        icon=f'<img src="/assets/de-logos/{"icewm.png" if slug=="icewm" else "kde-plasma.svg"}" alt="">' if slug in ('icewm','plasma') else letter
+        bars.append(f'<div class="ram-column {"ram-column-flame" if slug=="flamewm" else ""}"><div class="ram-bar-wrap"><div class="ram-number">{v}</div><div class="ram-bar" style="--bar-height:{value/1300*100:.2f}%;--bar-color:{color}"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:{color}">{icon}</span><strong>{name}</strong><small>{"PROCESS RSS" if slug=="flamewm" else "SYSTEM IDLE"}</small></div></div>')
+    section = section[:start]+''.join(bars)+section[end:]
+    section = section.replace('href={sources.ubuntu}', 'href="https://computingforgeeks.com/desktop-environment-ram-usage/"').replace('href={sources.q4os}', 'href="https://www.q4os.org/forum/viewtopic.php?pid=29965"')
+    return section
 
 layout = read('src/layouts/SiteLayout.astro')
 preview = read('src/components/DesktopPreview.astro')
@@ -33,6 +48,7 @@ for name,path in [('home','index.astro'),('features','features.astro'),('about',
     page = read('src/pages/'+path)
     page = re.sub(r'^<SiteLayout\s+.*?>', '', page, count=1, flags=re.S).strip()
     page = re.sub(r'</SiteLayout>\s*$', '', page)
+    page = page.replace('<RamComparison />', render_ram())
     page = page.replace('<DesktopPreview />', preview).replace('<DesktopPreview compact={true} />',preview.replace('class="desktop-preview"','class="desktop-preview desktop-preview-compact"',1))
     page = replace_urls(page)
     site = layout.replace('<slot />',page)

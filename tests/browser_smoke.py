@@ -80,6 +80,26 @@ with sync_playwright() as pw:
         print(f'PASS {name:16s} viewport={width}x{height} overflow={overflow}', flush=True)
         page.close()
 
+    # The new assets and actual benchmark values must be visible in browser.
+    home = browser.new_page(viewport={'width': 1440, 'height': 900})
+    home.set_content(html_fixture('index.html'))
+    assert home.locator('.brand-wordmark').count() == 2
+    assert home.locator('.brand-wordmark').first.evaluate('(img) => img.complete && img.naturalWidth > 0')
+    assert home.locator('.hero-real-screenshot').evaluate('(img) => img.complete && img.naturalWidth > 0')
+    assert home.locator('#benchmarks .ram-column').count() == 8
+    assert 'Different measurement scopes.' in home.locator('#benchmarks').inner_text()
+    home.locator('#benchmarks').scroll_into_view_if_needed()
+    home.screenshot(path=str(OUT/'ram-comparison-desktop.png'), full_page=False)
+    home.close()
+    mobile = browser.new_page(viewport={'width':390,'height':844})
+    mobile.set_content(html_fixture('index.html'))
+    chart = mobile.locator('#benchmarks .ram-chart-scroll')
+    assert chart.evaluate('(el) => el.scrollWidth > el.clientWidth'), 'mobile chart should scroll'
+    chart.scroll_into_view_if_needed()
+    mobile.screenshot(path=str(OUT/'ram-comparison-mobile.png'), full_page=False)
+    mobile.close()
+    print('PASS benchmark data, real screenshot, responsive scroll, wordmark assets', flush=True)
+
     # Existing interactive prototype must still initialize and show its launcher.
     demo = browser.new_page(viewport={'width': 1200, 'height': 760})
     failures = []

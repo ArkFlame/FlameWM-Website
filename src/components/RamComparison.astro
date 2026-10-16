@@ -1,0 +1,45 @@
+---
+import { benchmarks, sources } from '../data/benchmarks';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const logos = { icewm: 'icewm.png', plasma: 'kde-plasma.svg' };
+---
+<section class="ram-section" id="benchmarks" aria-labelledby="ram-title">
+  <div class="container ram-wrap">
+    <div class="ram-head" data-reveal>
+      <div>
+        <span class="eyebrow ram-kicker"><span class="ram-pulse"></span> THE LIGHTEST DESKTOP, BY DESIGN</span>
+        <h2 id="ram-title">Side by Side<br /><em>RAM Usage.</em></h2>
+      </div>
+      <div class="ram-head-aside">
+        <div class="ram-hero-measure"><span>≈</span>17<span class="ram-unit">MB</span></div>
+        <span class="ram-hero-description">FlameWM window-manager process RSS<br /><small>Internal preliminary measurement</small></span>
+      </div>
+    </div>
+    <div class="ram-chart-shell" data-reveal>
+      <div class="ram-chart-meta"><span>REPORTED MEMORY FOOTPRINTS</span><span>PROCESS RSS VS. IDLE SYSTEM RAM · DIFFERENT SCOPES</span></div>
+      <div class="ram-chart-scroll" tabindex="0" aria-label="Reported RAM usage for FlameWM and other Linux desktop environments. Scroll horizontally if needed.">
+        <div class="ram-chart" role="group" aria-label="Reported idle memory measurements; FlameWM uses a different metric">
+          <div class="ram-guidelines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          {benchmarks.map((item) => (
+            <div class:list={['ram-column', item.id === 'flamewm' && 'ram-column-flame']}>
+              <div class="ram-bar-wrap">
+                <div class="ram-number">{item.id === 'flamewm' ? '≈' : ''}{item.value}<small> {item.id === 'flamewm' || item.id === 'icewm' ? 'MB' : 'MiB'}</small></div>
+                <div class="ram-bar" style={`--bar-height:${(item.value / 1300 * 100).toFixed(2)}%;--bar-color:${item.color}`} title={`${item.name}: ${item.value} ${item.id === 'flamewm' || item.id === 'icewm' ? 'MB' : 'MiB'} (${item.kind})`}></div>
+              </div>
+              <div class="ram-label">
+                <span class="ram-logo" style={`--logo-color:${item.color}`} aria-hidden="true">{logos[item.id] ? <img src={`${base}assets/de-logos/${logos[item.id]}`} alt="" loading="lazy" width="26" height="26" /> : item.icon}</span>
+                <strong>{item.name}</strong>
+                <small>{item.id === 'flamewm' ? 'PROCESS RSS' : 'SYSTEM IDLE'}</small>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="ram-chart-bottom"><span><i class="ram-key-dot ram-key-flame"></i> Internal process RSS</span><span><i class="ram-key-dot ram-key-peer"></i> Published total system idle memory</span></div>
+    </div>
+    <div class="ram-notes" data-reveal>
+      <div class="ram-clarification"><span class="ram-note-symbol" aria-hidden="true">i</span><p><strong>Different measurement scopes.</strong> FlameWM’s ~17 MB is one process’s RSS, not a complete desktop session. Other figures include the operating system and desktop session and are <strong>not directly comparable</strong>. This chart shows reported figures, not a controlled head-to-head benchmark or proof of a world record.</p></div>
+      <p class="ram-sources">External results: <a href={sources.ubuntu} target="_blank" rel="noopener noreferrer">Ubuntu 26.04 desktop comparison (2026) ↗</a> · <a href={sources.q4os} target="_blank" rel="noopener noreferrer">Q4OS IceWM test (2025) ↗</a>. Values vary by distribution, startup services, hardware and measurement method. Figures shown as reported.</p>
+    </div>
+  </div>
+</section>

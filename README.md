@@ -68,3 +68,13 @@ GitHub Pages can build Jekyll directly from a publishing branch; it does not aut
 ## Test scope
 
 The static output validator (`tests/check_static.py`) verifies required routes, links, local file dependencies, CNAME, prototype assets and HTML-level invariants. Local browser checks should also cover mobile navigation, keyboard accessibility, viewport overflow and demo behavior. A successful CI build is required before claiming the GitHub Pages deployment is fully verified.
+
+
+## 2026-10-16 homepage refresh
+
+- Uses the provided **real desktop screenshot** in the home-page hero.
+- Uses the provided **cropped FlameWM wordmark** in the navbar and footer.
+- Adds a horizontal-scrollable vertical comparison chart with approximate ~17 MB WM RSS, six Ubuntu desktop results and IceWM from a separate published test; clearly labels incompatible measurement scopes.
+- Includes icon provenance and benchmark limitations in `docs/RAM_BENCHMARK_SOURCES.md`.
+- Original `/try/` contents preserved.
+- Browser screenshots are visual-fixture outputs, not an Astro compiler build; `npm run build` remains the publishing authority in GitHub Actions.
