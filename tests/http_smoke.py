@@ -22,7 +22,7 @@ try:
         '/about/':b'<main id="content">',
         '/try/':b'app.js',
         '/assets/css/site.css':b'.hero',
-        '/assets/js/site.js':b'data-menu-toggle',
+        '/assets/js/site.js':b'menu-trigger',
         '/assets/brand/flamewm-navbar.webp':b'RIFF',
         '/assets/brand/flamewm-real-screenshot-preview.webp':b'RIFF',
         '/CNAME':b'wm.arkflame.com',

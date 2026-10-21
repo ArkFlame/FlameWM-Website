@@ -1,7 +1,7 @@
 """Static build checks for GitHub Pages outputs. Uses stdlib only."""
 import sys, pathlib, re, html.parser, urllib.parse, xml.etree.ElementTree as ET
 root = pathlib.Path(sys.argv[1] if len(sys.argv)>1 else 'dist').resolve()
-required = ('.nojekyll','index.html','features/index.html','about/index.html','404.html','try/index.html','try/app.js','try/styles.css','assets/js/site.js','assets/brand/flamewm-mark.svg','assets/brand/flamewm-navbar.webp','assets/brand/flamewm-real-screenshot-preview.webp','assets/css/site.css','CNAME','sitemap.xml','robots.txt')
+required = ('.nojekyll','index.html','features/index.html','about/index.html','404.html','try/index.html','try/app.js','try/styles.css','assets/js/site.js','assets/brand/argentina-flag.svg','assets/brand/flamewm-mark.svg','assets/brand/flamewm-navbar.webp','assets/brand/flamewm-real-screenshot-preview.webp','assets/css/site.css','docs/RAM_BENCHMARK_SOURCES.md','CNAME','sitemap.xml','robots.txt')
 errors = [f'Missing required file: {p}' for p in required if not (root/p).is_file()]
 base = '/'
 class Scan(html.parser.HTMLParser):

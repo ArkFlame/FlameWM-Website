@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0c10" />
+    <meta name="description" content="An independent Rust desktop and window manager for Linux. Familiar by design and lightweight at heart." />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="canonical" href="https://wm.arkflame.com/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FlameWM" />
+    <meta property="og:title" content="FlameWM — home" />
+    <meta property="og:description" content="An independent Rust desktop and window manager for Linux. Familiar by design and lightweight at heart." />
+    <meta property="og:url" content="https://wm.arkflame.com/" />
+    <meta property="og:image" content={new URL(url('assets/brand/flamewm-real-screenshot-preview.webp'), Astro.site || Astro.url).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>FlameWM — home</title>
+  <link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="header" id="top" data-header>
+      <div class="container header-inner">
+        <a href="/" class="identity" aria-label="FlameWM — Home">
+          <img class="brand-wordmark" src="/assets/brand/flamewm-navbar.webp" alt="FlameWM" width="198" height="62" decoding="async" />
+        </a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="/" aria-current="page">Overview</a>
+          <a href="/features/" >Features</a>
+          <a href="/about/" >About</a>
+          <a href="/#benchmarks">RAM usage</a>
+          <a href="/try/">Interactive demo <span aria-hidden="true">↗</span></a>
+        </nav>
+        <div class="nav-actions">
+          <a href="https://github.com/ArkFlame/flamewm" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="FlameWM on GitHub">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8A11.2 11.2 0 0 0 8.46 22.63c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.34-3.79-1.34-.51-1.3-1.25-1.65-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15A10.7 10.7 0 0 1 12 6.08c.95 0 1.9.13 2.8.38 2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.12 2.98.72.79 1.15 1.79 1.15 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z" /></svg>
+          </a>
+          <a class="button button-small button-accent nav-primary" href="/try/">Explore FlameWM <span aria-hidden="true">↗</span></a>
+          <button type="button" class="menu-toggle" data-menu-toggle aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu hidden>
+        <a href="/">Overview</a>
+        <a href="/features/">Features</a>
+        <a href="/about/">About</a>
+        <a href="/#benchmarks">RAM usage</a>
+        <a href="/try/">Interactive demo</a>
+        <a href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a>
+      </nav>
+    </header>
+    <main id="content"><section class="hero hero-grid" aria-labelledby="hero-heading">
+    <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div><div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+    <div class="container hero-copy" data-reveal>
+      <a class="hero-announcement" href="/about/"><span class="announcement-dot"></span> Introducing a new kind of Linux desktop <span aria-hidden="true">↗</span></a>
+      <h1 id="hero-heading">Your desktop.<br /><span>Without the weight.</span></h1>
+      <p>All the desktop essentials, without the excess. Meet FlameWM: a familiar Linux experience, carefully built to stay light.</p>
+      <div class="hero-actions"><a class="button button-accent" href="/try/">Experience the demo <span aria-hidden="true">↗</span></a><a class="button button-outline" href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Explore the source <span aria-hidden="true">↗</span></a></div>
+      <p class="hero-note"><span class="mini-led"></span> Independent Rust project · In active development</p>
+    </div>
+    <div class="hero-visual container" data-reveal>
+      <div class="hero-screen-frame"><div class="screen-bezel"><img class="hero-real-screenshot" src="/assets/brand/flamewm-real-screenshot-preview.webp" alt="Actual FlameWM Linux desktop showing a Konsole window, wallpaper, workspaces and taskbar" width="1346" height="637" fetchpriority="high" decoding="async" /></div><div class="screen-caption"><span>FLAMEWM / NATIVE DESKTOP</span><span>REAL BUILD — 2026</span></div></div>
+      <p class="image-disclaimer">FlameWM desktop screenshot from an active development build.</p>
+    </div>
+  </section>
+  <section class="statement-strip" aria-label="FlameWM principles"><div class="container statement-inner"><div><span class="statement-marker">01 /</span><strong>Intuitive by default.</strong></div><div><span class="statement-marker">02 /</span><strong>The Lightest Desktop, by design.</strong></div><div><span class="statement-marker">03 /</span><strong>Yours to make.</strong></div></div></section>
+  <section class="light-section intro-section" id="experience"><div class="container">
+    <div class="split-heading" data-reveal><div><span class="eyebrow red">THE EXPERIENCE</span><h2>It just feels<br /><em>right.</em></h2></div><div><p>A desktop should help you get things done, not give you another system to manage. FlameWM brings the essentials together in an interface that feels natural from the first click.</p><a class="text-link" href="/features/">Discover the experience <span aria-hidden="true">↗</span></a></div></div>
+    <div class="editorial-grid">
+      <article class="editorial-card editor-card-one" data-reveal><div class="editorial-art editorial-task"><div class="wallpaper-art"><div class="task-demo-top">Workspace / 01 <span>10:42</span></div><div class="task-demo-dock"><span class="dock-accent">◈</span><span>▤</span><span>◉</span><span>▣</span><span>✦</span><i></i><small>⌁ &nbsp; ◕ &nbsp; 10:42</small></div></div></div><div class="editorial-body"><div class="card-index">01 &nbsp; / &nbsp; MADE FAMILIAR</div><h3>Everything in its place.</h3><p>One coherent home for your apps, windows, workspaces and everyday controls.</p></div></article>
+      <article class="editorial-card editor-card-two" data-reveal><div class="editorial-art editorial-window"><div class="mock-glass-card"><div class="window-graphic-top">YOUR WORKSPACE <span>×</span></div><div class="window-grid"><div></div><div></div><div></div><div></div></div><div class="window-divider"></div><div class="fake-text-lg"></div><div class="fake-text-sm"></div></div><div class="float-dot">↗</div></div><div class="editorial-body"><div class="card-index">02 &nbsp; / &nbsp; STAY IN FLOW</div><h3>Windows, effortlessly.</h3><p>Thoughtful snapping, straightforward multitasking and spaces for every part of your day.</p></div></article>
+      <article class="editorial-card editor-card-three" data-reveal><div class="editorial-art editorial-color"><div class="palette-window"><span class="palette-label">Make it yours</span><h4>Choose your accent.</h4><div class="palette-circle-row"><span></span><span></span><span></span><span></span><span></span></div><div class="palette-preview">Appearance <b>● &nbsp; Dark</b></div></div></div><div class="editorial-body"><div class="card-index">03 &nbsp; / &nbsp; PERSONAL BY NATURE</div><h3>Simply yours.</h3><p>Change what matters. Keep the experience consistent, calm and unmistakably FlameWM.</p></div></article>
+    </div>
+  </div></section>
+  <section class="dark-section feature-story" id="features"><div class="container"><div class="section-title-center" data-reveal><span class="eyebrow">THOUGHTFUL BY DESIGN</span><h2>Less to think about.<br /><span>More room to create.</span></h2><p>Every detail has a job to do. Nothing needs to shout.</p></div>
+    <div class="story-grid"><div class="story-large" data-reveal><div class="story-visual"><div class="story-window-ambient"></div><div class="story-setting-pane"><div class="story-menu"><span class="story-menu-header">FLAMEWM</span><span class="story-menu-item">◉ &nbsp; Appearance</span><span>▱ &nbsp; Desktop</span><span>▤ &nbsp; Taskbar</span><span>▣ &nbsp; Displays</span><span>⌨ &nbsp; Shortcuts</span></div><div class="story-setting-main"><small>APPEARANCE</small><h4>Make yourself<br />at home.</h4><div class="story-appearance"><div></div><div></div></div><span class="story-small-line"></span><span class="story-small-line short"></span></div></div></div><div class="story-card-caption"><span class="card-index light-index">CONTROL WITHOUT COMPLEXITY</span><h3>Settings that make sense.</h3><p>Clear choices for appearance, displays, shortcuts and the desktop. No configuration expertise required.</p></div></div>
+      <div class="story-right"><div class="story-small story-performance" data-reveal><div class="abstract-speed" aria-hidden="true"><div class="speed-ring"></div><span>≈17 MB<br />RSS</span></div><div><span class="card-index light-index">BUILT IN RUST</span><h3>Small on purpose.</h3><p>~17 MB reported window-manager RSS in an internal development measurement. The full session uses more.</p></div></div><div class="story-small story-open" data-reveal><div class="open-symbol">{<span>/</span>}</div><div><span class="card-index light-index">OPEN DEVELOPMENT</span><h3>Made in the open.</h3><p>Explore the source, follow development and help shape what comes next.</p></div></div></div></div>
+  </div></section>
+  <section class="ram-section" id="benchmarks" aria-labelledby="ram-title">
+  <div class="container ram-wrap">
+    <div class="ram-head" data-reveal>
+      <div>
+        <span class="eyebrow ram-kicker"><span class="ram-pulse"></span> THE LIGHTEST DESKTOP, BY DESIGN</span>
+        <h2 id="ram-title">Side by Side<br /><em>RAM Usage.</em></h2>
+      </div>
+      <div class="ram-head-aside">
+        <div class="ram-hero-measure"><span>≈</span>17<span class="ram-unit">MB</span></div>
+        <span class="ram-hero-description">FlameWM window-manager process RSS<br /><small>Internal preliminary measurement</small></span>
+      </div>
+    </div>
+    <div class="ram-chart-shell" data-reveal>
+      <div class="ram-chart-meta"><span>REPORTED MEMORY FOOTPRINTS</span><span>PROCESS RSS VS. IDLE SYSTEM RAM · DIFFERENT SCOPES</span></div>
+      <div class="ram-chart-scroll" tabindex="0" aria-label="Reported RAM usage for FlameWM and other Linux desktop environments. Scroll horizontally if needed.">
+        <div class="ram-chart" role="group" aria-label="Reported idle memory measurements; FlameWM uses a different metric">
+          <div class="ram-guidelines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="ram-column ram-column-flame"><div class="ram-bar-wrap"><div class="ram-number">≈17 MB</div><div class="ram-bar" style="--bar-height:1.31%;--bar-color:#f35058"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#f35058">F</span><strong>FlameWM</strong><small>PROCESS RSS</small></div></div><div class="ram-column "><div class="ram-bar-wrap"><div class="ram-number">288 MB</div><div class="ram-bar" style="--bar-height:22.15%;--bar-color:#8baad7"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#8baad7"><img src="/assets/de-logos/icewm.png" alt=""></span><strong>IceWM</strong><small>SYSTEM IDLE</small></div></div><div class="ram-column "><div class="ram-bar-wrap"><div class="ram-number">745 MiB</div><div class="ram-bar" style="--bar-height:57.31%;--bar-color:#43c0b6"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#43c0b6">L</span><strong>LXQt</strong><small>SYSTEM IDLE</small></div></div><div class="ram-column "><div class="ram-bar-wrap"><div class="ram-number">835 MiB</div><div class="ram-bar" style="--bar-height:64.23%;--bar-color:#8ab77d"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#8ab77d">M</span><strong>MATE</strong><small>SYSTEM IDLE</small></div></div><div class="ram-column "><div class="ram-bar-wrap"><div class="ram-number">888 MiB</div><div class="ram-bar" style="--bar-height:68.31%;--bar-color:#91b7f1"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#91b7f1">X</span><strong>Xfce</strong><small>SYSTEM IDLE</small></div></div><div class="ram-column "><div class="ram-bar-wrap"><div class="ram-number">894 MiB</div><div class="ram-bar" style="--bar-height:68.77%;--bar-color:#93afea"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#93afea">G</span><strong>GNOME</strong><small>SYSTEM IDLE</small></div></div><div class="ram-column "><div class="ram-bar-wrap"><div class="ram-number">960 MiB</div><div class="ram-bar" style="--bar-height:73.85%;--bar-color:#d19b70"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#d19b70">C</span><strong>Cinnamon</strong><small>SYSTEM IDLE</small></div></div><div class="ram-column "><div class="ram-bar-wrap"><div class="ram-number">1209 MiB</div><div class="ram-bar" style="--bar-height:93.00%;--bar-color:#a79ee6"></div></div><div class="ram-label"><span class="ram-logo" style="--logo-color:#a79ee6"><img src="/assets/de-logos/kde-plasma.svg" alt=""></span><strong>KDE Plasma</strong><small>SYSTEM IDLE</small></div></div>
+        </div>
+      </div>
+      <div class="ram-chart-bottom"><span><i class="ram-key-dot ram-key-flame"></i> Internal process RSS</span><span><i class="ram-key-dot ram-key-peer"></i> Published total system idle memory</span></div>
+    </div>
+    <div class="ram-notes" data-reveal>
+      <div class="ram-clarification"><span class="ram-note-symbol" aria-hidden="true">i</span><p><strong>Different measurement scopes.</strong> FlameWM’s ~17 MB is one process’s RSS, not a complete desktop session. Other figures include the operating system and desktop session and are <strong>not directly comparable</strong>. This chart shows reported figures, not a controlled head-to-head benchmark or proof of a world record.</p></div>
+      <p class="ram-sources">External results: <a href="https://computingforgeeks.com/desktop-environment-ram-usage/" target="_blank" rel="noopener noreferrer">Ubuntu 26.04 desktop comparison (2026) ↗</a> · <a href="https://www.q4os.org/forum/viewtopic.php?pid=29965" target="_blank" rel="noopener noreferrer">Q4OS IceWM test (2025) ↗</a>. Values vary by distribution, startup services, hardware and measurement method. Figures shown as reported.</p>
+    </div>
+  </div>
+</section>
+
+  <section class="light-section philosophy" id="philosophy"><div class="container philosophy-grid"><div data-reveal><span class="eyebrow red">OUR APPROACH</span><h2>Familiar.<br />Fast.<br /><span>Finished.</span></h2></div><div class="philosophy-content" data-reveal><p class="philosophy-lead">You shouldn’t need to choose between a desktop that feels complete and one that stays out of your way.</p><div class="philosophy-line"><span>01</span><div><h3>The essentials, thoughtfully done.</h3><p>A coherent desktop, taskbar, launcher and controls from the start.</p></div></div><div class="philosophy-line"><span>02</span><div><h3>Quiet in the background.</h3><p>Efficiency is part of the design, not a feature hidden behind settings.</p></div></div><div class="philosophy-line"><span>03</span><div><h3>Built to feel like your own.</h3><p>Meaningful personalization without endless decisions or unnecessary complexity.</p></div></div></div></div></section>
+  <section class="preview-section"><div class="container preview-layout"><div class="preview-copy" data-reveal><span class="eyebrow red">HANDS-ON PREVIEW</span><h2>See where we’re headed.</h2><p>Explore our interactive desktop prototype. Open the launcher, move windows and discover the design direction before final screenshots are available.</p><div class="preview-actions"><a href="/try/" class="button button-dark">Launch interactive demo <span aria-hidden="true">↗</span></a><span>Runs in your browser · UI prototype only</span></div></div><div class="preview-image" data-reveal><img src="/assets/images/flamewm-settings.webp" alt="FlameWM System Settings development reference screenshot" loading="lazy" decoding="async" width="755" height="505" /><span class="preview-image-caption">REFERENCE SCREENSHOT · DEVELOPMENT BUILD</span></div></div></section>
+  <section class="last-cta"><div class="container last-cta-inner" data-reveal><span class="eyebrow">THIS IS JUST THE BEGINNING</span><h2>A lighter desktop<br />starts here.</h2><p>FlameWM is being built in the open. See the code, try the concept, and follow the journey.</p><div class="hero-actions"><a class="button button-accent" href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a><a class="button button-outline" href="https://paypal.me/LinsaFTW" target="_blank" rel="noopener noreferrer">Support development <span aria-hidden="true">↗</span></a></div></div></section>
+</main>
+    <footer class="footer">
+      <div class="container footer-top">
+        <div>
+          <a class="identity footer-identity" href="/"><img class="brand-wordmark" src="/assets/brand/flamewm-navbar.webp" alt="FlameWM" width="198" height="62" loading="lazy" decoding="async" /></a>
+          <p>A lighter way to feel at home on Linux.</p>
+        </div>
+        <div class="footer-links"><div><strong>Explore</strong><a href="/features/">Features</a><a href="/try/">Interactive demo</a><a href="/#benchmarks">RAM comparison</a><a href="/about/">About</a></div><div><strong>Project</strong><a href="https://github.com/ArkFlame/flamewm" target="_blank" rel="noopener noreferrer">Source code ↗</a><a href="https://github.com/ArkFlame/flamewm/issues" target="_blank" rel="noopener noreferrer">Issues ↗</a><a href="https://paypal.me/LinsaFTW" target="_blank" rel="noopener noreferrer">Support development ↗</a></div></div>
+      </div>
+      <div class="container footer-bottom"><span>© <span data-year>2026</span> ArkFlame Studios. Built for Linux.</span><span>Independent Rust project · In active development</span></div>
+    </footer>
+    <script src="/assets/js/site.js"></script>
+  </body>
+</html>

@@ -1,54 +1,50 @@
 # FlameWM Website
 
-**Live site:** https://wm.arkflame.com  
-**Repository:** https://github.com/ArkFlame/FlameWM-Website
+Independent static website for [FlameWM](https://github.com/ArkFlame/flamewm), by ArkFlame Studios.
 
-## GitHub Pages fix (2026-10-16)
+**Published URL:** https://wm.arkflame.com
 
-The previous ZIP contained `dist/index.html` but did **not** contain `index.html` at repository root. GitHub Pages configured to publish **main / (root)** therefore served the repository README instead of the site.
+## Architecture
 
-**Fixed:** all generated HTML, CSS, JavaScript, images, favicon assets, and the unchanged `/try/` prototype are now present directly at the repository root, alongside `.nojekyll` and `CNAME`.
+- Plain HTML, CSS, JavaScript. No Astro, Jekyll, npm or build step.
+- `index.html`, `features/index.html`, `about/index.html`, `404.html`: published pages.
+- `assets/css/site.css`: all styling, responsive design, scroll transitions and reduced-motion support.
+- `assets/js/site.js`: right ruler/progress, active section headings, rising next-section typography, restrained hero parallax, mobile navigation, screenshot lightbox, reveal and bar animation, and benchmark scroller progress.
+- `assets/brand`: FlameWM wordmark and real development screenshot.
+- `assets/de-logos`: MATE/Xfce/KDE/IceWM source assets and original illustrative emblems for LXQt, GNOME, Cinnamon and Budgie; see `ASSET_SOURCES.md`.
+- `try/`: original interactive browser desktop prototype, preserved.
+- `docs/RAM_BENCHMARK_SOURCES.md`: reported external measurements and critical non-comparability disclaimer.
+- `.github/workflows/pages.yml`: deploy the checked-in static root using GitHub Pages Actions.
 
-### Publish now
+## Publish on GitHub Pages
 
-1. Replace the repository contents with **the contents of this ZIP** (not a folder wrapping them); commit all files including `.github/workflows/pages.yml`, `index.html`, `assets/`, `features/`, `about/`, `try/`, `CNAME`, and `.nojekyll`, then push to `main`.
-2. GitHub → **Settings → Pages → Build and deployment** → select **Deploy from a branch**, branch **main**, folder **/(root)** → Save. This is the simplest deployment path and requires no npm/Astro build.
-3. If you prefer **GitHub Actions** as the Pages source, select it instead and run the bundled **Deploy FlameWM website** workflow. It stages *only* the approved static website and deploys it with `actions/upload-pages-artifact@v4` / `actions/deploy-pages@v4`. It never installs dependencies.
-4. GitHub → **Settings → Pages → Custom domain**: `wm.arkflame.com`. Keep existing working DNS and enable **Enforce HTTPS** once available. Root `CNAME` contains exactly this domain.
-5. After publishing, check `/`, `/features/`, `/about/`, and `/try/`. The homepage should begin with FlameWM's hero, **not** this README.
+1. Extract the package **contents** to the repository root (not into a nested folder). Ensure `index.html` is in the root.
+2. Commit/push to the default `main` branch.
+3. GitHub → Settings → Pages → Source: **GitHub Actions**. The included workflow validates/stages and publishes the static files.
+4. Keep the `wm.arkflame.com` custom domain. `CNAME` is included.
 
-**Important:** A repository ZIP cannot change the GitHub repository's Settings → Pages publishing source. Step 2 or 3 must match the selected method. Do not publish from `docs/`, `dist/`, or a non-existent `gh-pages` branch.
+Alternatively choose **Deploy from a branch** → `main` → `/(root)` because the site is already static at the repository root. Choose **only one** deployment source.
 
-### Verify without Node.js
+## Preview and test
 
-```sh
-python3 tests/check_static.py .
-python3 scripts/site_release.py stage
-python3 tests/check_static.py .pages-output
-python3 -m http.server 8000
-```
+Local preview: run `./preview.sh` from the extracted website directory. It serves the website at `http://127.0.0.1:8080/`, opens your default browser on Linux desktops, and stops with Ctrl+C. Use `./preview.sh 8081` to select a different port, or `./preview.sh --no-browser` when testing without a graphical browser. Requires only Python 3; no npm or Astro.
 
-Open http://localhost:8000/ (plus `/features/`, `/about/`, `/try/`). Browser UI tests with Playwright can be run using `python3 tests/browser_smoke.py` if `playwright` and Chromium are installed.
+Dependency-free checks: `python3 tests/check_static.py .`.
 
-### Optional Astro editing workflow
+Optional Chromium browser tests: `python3 tests/browser_smoke.py` (requires Playwright and Chromium). The browser test creates an offline HTML fixture; no public network is required.
 
-Astro templates remain in `src/`, but **the checked-in root HTML is the deployment source**. Edits to `src/` do not deploy until the new Astro build is explicitly promoted to the root:
+GitHub Actions deploys the exact website, including `try/`. No `dist/` or remote package registry is involved.
 
-```sh
-npm install
-npm run build:publish
-```
+## Site truth and measurements
 
-This requires Node.js >=22.22.0 and network access to install Astro 7.3.8. Commit the regenerated root HTML and assets. The published website itself needs **no** npm or Node.js.
+FlameWM's ~17 MB is a **preliminary internally reported process RSS**, not independently reproduced. Competitor figures are **whole-system** idle values from a published Ubuntu 26.04 comparison (IceWM comes from another Q4OS test). The figures appear on one visual axis for convenience, but are not directly comparable benchmarks because the measurement scopes differ.
 
-`npm run build` alone updates `dist/` locally, which Pages no longer consumes. Do not run `tests/preview_build.py` to prepare a release: that script creates a non-Astro fixture for visual tests only.
+FlameWM is an independent Rust desktop/window manager **under active development**; the `/try/` path is a browser UI prototype, not a native Linux distribution. Current marketing copy does not assert that FlameWM is the objectively lightest desktop in the world.
 
-### Included content
+## Assets and reuse
 
-- Responsive landing page with the real FlameWM screenshot and supplied wordmark.
-- RAM comparison with **~17 MB FlameWM process RSS** identified separately from competitors' full-session measurements. These numbers are **not directly comparable**; data sources are recorded in `docs/RAM_BENCHMARK_SOURCES.md`.
-- Features, About, and 404 pages, sitemap, favicon and SEO metadata.
-- Preserved interactive desktop preview at `/try/` and required licensing files.
-- No Jekyll theme, React, CDN, or browser framework required.
+The landing page includes a compact “Made in Argentina 🇦🇷” signature. The RAM comparison uses one nine-column chart: FlameWM (reported window-manager RSS), IceWM (Q4OS idle system) and seven desktop sessions (Ubuntu idle system). Each column states its measurement type.
 
-**Deployment status:** This package is locally validated; GitHub Pages publishing settings, DNS, and the final public deployment must be checked in the target repository after upload.
+The site uses the supplied FlameWM wordmark, real desktop screenshot and original wallpaper (with atmospheric overlays), plus available open-source desktop application artwork. The four remaining desktop emblems are clearly labelled *illustrative artwork*, not official brand logos. See `assets/de-logos/ASSET_SOURCES.md` for provenance.
+
+Historical website files and Astro source were intentionally retired: the checked-in static root is the **only deployment authority**.

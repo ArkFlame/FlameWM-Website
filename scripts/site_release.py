@@ -15,7 +15,7 @@ FILES = (
     'android-chrome-192x192.png', 'android-chrome-512x512.png',
     'apple-touch-icon.png',
 )
-DIRS = ('about', 'features', 'assets', 'try')
+DIRS = ('about', 'features', 'assets', 'try', 'docs')
 
 
 def copy_site(source: Path, dest: Path) -> None:

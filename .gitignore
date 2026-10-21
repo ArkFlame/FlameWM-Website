@@ -1,6 +1,4 @@
-node_modules/
-dist/
+__pycache__/
 .pages-output/
-.astro/
+screenshots/
 .DS_Store
-*.log
