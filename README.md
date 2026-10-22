@@ -18,20 +18,20 @@ Independent static website for [FlameWM](https://github.com/ArkFlame/flamewm), b
 
 ## Publish on GitHub Pages
 
-1. Extract the package **contents** to the repository root (not into a nested folder). Ensure `index.html` is in the root.
-2. Commit/push to the default `main` branch.
-3. GitHub → Settings → Pages → Source: **GitHub Actions**. The included workflow validates/stages and publishes the static files.
-4. Keep the `wm.arkflame.com` custom domain. `CNAME` is included.
+1. Extract this archive **into the repository root**, preserving hidden files, especially `.github/workflows/pages.yml` and `.nojekyll`. Commit and push all changes to `main`.
+2. In **Settings → Pages → Build and deployment**, select **GitHub Actions**. The included workflow validates and publishes the exact static website. Remove or disable any previous Pages-deploy workflow that may publish a different artifact.
+3. Retain `wm.arkflame.com` under **Settings → Pages → Custom domain**. Do not change working DNS merely to fix styling.
+4. After the Actions deployment succeeds, visit **https://wm.arkflame.com/site-version.txt**. It must say `2026-10-21-pages-paths-v1`. If it is missing or different, Pages is serving a different commit/source or a cached deployment; the local design is not what was published.
 
-Alternatively choose **Deploy from a branch** → `main` → `/(root)` because the site is already static at the repository root. Choose **only one** deployment source.
+**Fixed:** URLs are relative to each page, so `/assets/…` no longer escapes the `/FlameWM-Website/` project prefix. CSS and JavaScript use a version query to avoid old browser/CDN cached assets. The CSS wallpaper URL resolves relative to the stylesheet. No Astro, npm or Jekyll build is required.
 
 ## Preview and test
 
 Local preview: run `./preview.sh` from the extracted website directory. It serves the website at `http://127.0.0.1:8080/`, opens your default browser on Linux desktops, and stops with Ctrl+C. Use `./preview.sh 8081` to select a different port, or `./preview.sh --no-browser` when testing without a graphical browser. Requires only Python 3; no npm or Astro.
 
-Dependency-free checks: `python3 tests/check_static.py .`.
+Dependency-free checks: `python3 tests/check_static.py .`, then `python3 scripts/site_release.py stage` and `python3 tests/http_smoke.py`. This checks both root and `/FlameWM-Website/` paths.
 
-Optional Chromium browser tests: `python3 tests/browser_smoke.py` (requires Playwright and Chromium). The browser test creates an offline HTML fixture; no public network is required.
+Optional Chromium browser tests: `python3 tests/browser_smoke.py` (requires Playwright and Chromium). The browser test uses offline fixtures; local HTTP routes and actual staged files are separately checked by `tests/http_smoke.py`.
 
 GitHub Actions deploys the exact website, including `try/`. No `dist/` or remote package registry is involved.
 

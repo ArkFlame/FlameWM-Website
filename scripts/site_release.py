@@ -9,7 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = (
-    'index.html', '404.html', 'CNAME', '.nojekyll', 'robots.txt',
+    'index.html', '404.html', 'CNAME', '.nojekyll', 'robots.txt', 'site-version.txt',
     'sitemap.xml', 'site.webmanifest', 'favicon.ico',
     'favicon-16x16.png', 'favicon-32x32.png',
     'android-chrome-192x192.png', 'android-chrome-512x512.png',

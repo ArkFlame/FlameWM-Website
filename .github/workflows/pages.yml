@@ -28,6 +28,8 @@ jobs:
         run: python3 scripts/site_release.py stage
       - name: Validate exact deployment artifact
         run: python3 tests/check_static.py .pages-output
+      - name: Verify deployed routes at both base paths
+        run: python3 tests/http_smoke.py
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:
